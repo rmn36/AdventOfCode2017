@@ -2,7 +2,6 @@
 require 'set'
 
 set = Set.new []
-x = []
 f = File.read("input.txt").split("\t").map(&:to_i)
 set.add(f.join(','))
 
@@ -24,12 +23,10 @@ begin
     end
 
     set.add(f.join(','))
-    x.push(f.join(','))
     old_size = new_size
     new_size = set.size
     counter+= 1
 
 end while old_size != new_size
 
-puts 
-puts counter - x.index(f.join(',')) - 1
+puts counter
