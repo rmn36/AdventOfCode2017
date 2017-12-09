@@ -1,6 +1,18 @@
 #!/usr/bin/env python
-
-
+class Tree(object):
+    "Generic tree node."
+    def __init__(self, name='root', children=None, weight=0):
+        self.name = name
+        self.weight=weight
+        self.children = []
+        if children is not None:
+            for child in children:
+                self.add_child(child)
+    def __repr__(self):
+        return self.name
+    def add_child(self, node):
+        assert isinstance(node, Tree)
+        self.children.append(node)
 
 with open('input.txt') as f:
     content = [x.strip().split('-> ') for x in f.readlines()]
@@ -24,5 +36,5 @@ for n in node_names:
     if count > 0:
         count = 0
     else:
-        print n
+        print n #part 1 solution
 
